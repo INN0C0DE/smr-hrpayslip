@@ -1,0 +1,51 @@
+*{
+    font-family: 'Poppins', sans-serif;
+}
+
+.card{
+    width: 378px;
+    height: 611.78;
+    border: 3px solid black;
+}
+
+.muni{
+    font-size: 12px;
+}
+
+.provi{
+    font-size: 12px;
+    margin-top: -10px;
+}
+
+.payslip{
+    font-size: 15px;
+    letter-spacing: 2px;
+}
+
+.details{
+    font-size: 10px;
+     border-spacing: 20px;
+     margin: 0;
+}
+
+
+ul{
+    font-size: 10px;
+}
+
+.bill{
+    font-size: 12px;
+    text-align: center;
+    font-weight: 600;
+}
+
+
+
+.bgcard {
+    background-image: url('../../assets/Images/payslipcenter20.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  
+  
