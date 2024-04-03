@@ -28,7 +28,7 @@
 
                             <div class="form-group">
                                 <label for="txt_dob">Date of Birth:</label>
-                                <input name="txt_dob" class="form-control input-sm" id="txt_dob" type="date" required/>
+                                <input name="txt_dob" class="form-control input-sm" id="txt_dob" type="date" required />
                             </div>
 
                             <div class="form-group">
@@ -41,7 +41,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="txt_cs_eligibility">Level of CS Eligibility:</label>                               
+                                <label for="txt_cs_eligibility">Level of CS Eligibility:</label>
                                 <select name="txt_cs_eligibility" id="txt_cs_eligibility" class="form-control input-sm" required>
                                     <option value="" disabled selected>Select Level of CS Eligibility</option>
                                     <option value="1st Level">1st Level</option>
@@ -62,7 +62,7 @@
 
                             <div class="form-group">
                                 <label for="txt_years_of_service">Years of Service as JO/COS/MOA personnel:</label>
-                                <input name="txt_years_of_service" class="form-control input-sm" id="txt_years_of_service" type="number" required/>
+                                <input name="txt_years_of_service" class="form-control input-sm" id="txt_years_of_service" type="number" required />
                             </div>
 
                             <div class="form-group">
@@ -82,7 +82,7 @@
 
                             <div class="form-group">
                                 <label for="txt_specified_work">Specified Work:</label>
-                                <input name="txt_specified_work" class="form-control input-sm" id="txt_specified_work" type="text" required/>   
+                                <input name="txt_specified_work" class="form-control input-sm" id="txt_specified_work" type="text" required />
                             </div>
 
                             <div class="form-group">

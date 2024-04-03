@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html>
 <link rel="icon" href="../../assets/Images/seal.png">
+
 <head>
     <link rel="stylesheet" type="text/css" href="style.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <style>
-        .highlighted {
-            background-color: yellow; /* Change this to your desired highlight color */
-        }
-        </style>
+    .highlighted {
+        background-color: yellow;
+        /* Change this to your desired highlight color */
+    }
+</style>
 
 
 <?php
@@ -72,73 +74,73 @@ if (!isset($_SESSION['role'])) {
 
                                 </span> -->
                             </div>
-                            
+
                         </div>
                         <!-- /.box-header -->
                         <div class="box-body table-responsive">
-                        <form method="post">
-    <table id="table" class="table table-bordered table-striped">
-        <thead>
-            <tr>
-                <th><input type="checkbox" name="chk_delete[]" class="cbxMain" onchange="checkMain(this)" /></th>
-                <th>Employee</th>
-                <th>Date of Birth</th>
-                <th>Sex</th>
-                <th>Level of CS Eligibility</th>
-                <th>Work Status</th>
-                <th>Years of Service as JO/COS/MOA personnel</th>
-                <th>Nature of Work</th>
-                <th>Specified Work</th>
-                <th>Status</th>
-            </tr>
-        </thead>
-        <tbody>
-        <?php
-// Fetching data from the database
-$squery = mysqli_query($con, "SELECT c.*, e.fname, e.mname, e.lname, e.suffix, nw.nof AS nature_of_work 
-                                FROM tbl_casual c 
-                                INNER JOIN tbl_employee e ON c.employee = e.oid
-                                LEFT JOIN tbl_naturework nw ON c.nature_work = nw.oid");
+                            <form method="post">
+                                <table id="table" class="table table-bordered table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th><input type="checkbox" name="chk_delete[]" class="cbxMain" onchange="checkMain(this)" /></th>
+                                            <th>Employee</th>
+                                            <th>Date of Birth</th>
+                                            <th>Sex</th>
+                                            <th>Level of CS Eligibility</th>
+                                            <th>Work Status</th>
+                                            <th>Years of Service as JO/COS/MOA personnel</th>
+                                            <th>Nature of Work</th>
+                                            <th>Specified Work</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php
+                                        // Fetching data from the database
+                                        $squery = mysqli_query($con, "SELECT c.*, e.fname, e.mname, e.lname, e.suffix, nw.nof AS nature_of_work 
+                                                    FROM tbl_casual c 
+                                                    INNER JOIN tbl_employee e ON c.employee = e.oid
+                                                    LEFT JOIN tbl_naturework nw ON c.nature_work = nw.oid");
 
-if (!$squery) {
-    // Error handling
-    echo "Error: " . mysqli_error($con);
-} else {
-    while ($row = mysqli_fetch_assoc($squery)) {
-        // Sanitize output
-        $employeeName = htmlspecialchars($row['lname'] . ', ' . $row['fname'] . ' ' . $row['suffix'] . ' ' . $row['mname']);
-        $dob = htmlspecialchars($row['dob']);
-        $sex = htmlspecialchars($row['sex']);
-        $csEligibility = htmlspecialchars($row['level_cs']);
-        $workStatus = htmlspecialchars($row['work_status']);
-        $yearsOfService = htmlspecialchars($row['year_service']);
-        $specifiedWork = htmlspecialchars($row['specified_work']);
-        $activestatus = htmlspecialchars($row['active_status']);
-        $natureOfWork = isset($row['nature_of_work']) ? htmlspecialchars($row['nature_of_work']) : "N/A";
+                                        if (!$squery) {
+                                            // Error handling
+                                            echo "Error: " . mysqli_error($con);
+                                        } else {
+                                            while ($row = mysqli_fetch_assoc($squery)) {
+                                                // Sanitize output
+                                                $employeeName = htmlspecialchars($row['lname'] . ', ' . $row['fname'] . ' ' . $row['suffix'] . ' ' . $row['mname']);
+                                                $dob = htmlspecialchars($row['dob']);
+                                                $sex = htmlspecialchars($row['sex']);
+                                                $csEligibility = htmlspecialchars($row['level_cs']);
+                                                $workStatus = htmlspecialchars($row['work_status']);
+                                                $yearsOfService = htmlspecialchars($row['year_service']);
+                                                $specifiedWork = htmlspecialchars($row['specified_work']);
+                                                $activestatus = htmlspecialchars($row['active_status']);
+                                                $natureOfWork = isset($row['nature_of_work']) ? htmlspecialchars($row['nature_of_work']) : "N/A";
 
-        echo '<tr>
-                <td><input type="checkbox" name="chk_delete[]" class="chk_delete" value="' . $row['oid'] . '"  /></td>
-                <td>' . $employeeName . '</td>
-                <td>' . $dob . '</td>
-                <td>' . $sex . '</td>
-                <td>' . $csEligibility . '</td>
-                <td>' . $workStatus . '</td>
-                <td>' . $yearsOfService . '</td>
-                <td>' . $natureOfWork . '</td>
-                <td>' . $specifiedWork . '</td>
-                <td>' . $activestatus . '</td>
-            </tr>';
-    }
-}
-?>
+                                                echo '<tr>
+                                    <td><input type="checkbox" name="chk_delete[]" class="chk_delete" value="' . $row['oid'] . '"  /></td>
+                                    <td>' . $employeeName . '</td>
+                                    <td>' . $dob . '</td>
+                                    <td>' . $sex . '</td>
+                                    <td>' . $csEligibility . '</td>
+                                    <td>' . $workStatus . '</td>
+                                    <td>' . $yearsOfService . '</td>
+                                    <td>' . $natureOfWork . '</td>
+                                    <td>' . $specifiedWork . '</td>
+                                    <td>' . $activestatus . '</td>
+                                </tr>';
+                                            }
+                                        }
+                                        ?>
 
 
 
-        </tbody>
-    </table>
+                                    </tbody>
+                                </table>
 
-    <?php include "delete_casual.php"; ?>
-</form>
+                                <?php include "delete_casual.php"; ?>
+                            </form>
 
                         </div><!-- /.box-body -->
                     </div><!-- /.box -->
@@ -157,21 +159,19 @@ if (!$squery) {
     <?php }
 include "../footer.php"; ?>
 
-<script type="text/javascript">
-    $(function() {
-        $("#table").dataTable({
-            "deferRender": true,
-            "paging": true,
-            "aoColumnDefs": [{
-                "bSortable": false,
-                "aTargets": [0]
-            }],
-            "aaSorting": [],
+    <script type="text/javascript">
+        $(function() {
+            $("#table").dataTable({
+                "deferRender": true,
+                "paging": true,
+                "aoColumnDefs": [{
+                    "bSortable": false,
+                    "aTargets": [0]
+                }],
+                "aaSorting": [],
+            });
         });
-    });
-
-  
-</script>
+    </script>
     </body>
 
 </html>
