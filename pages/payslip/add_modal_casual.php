@@ -81,11 +81,16 @@
                             </div>
 
                             <div class="form-group">
+                                <label for="txt_specified_work">Specified Work:</label>
+                                <input name="txt_specified_work" class="form-control input-sm" id="txt_specified_work" type="text" required/>   
+                            </div>
+
+                            <div class="form-group">
                                 <label for="txt_status">Status:</label>
                                 <select name="txt_status" id="txt_status" class="form-control input-sm" required>
                                     <option value="" disabled selected>Select Status</option>
-                                    <option value="Job Order">Active</option>
-                                    <option value="Casual">Inactive</option>
+                                    <option value="Active">Active</option>
+                                    <option value="Inactive">Inactive</option>
                                 </select>
                             </div>
 

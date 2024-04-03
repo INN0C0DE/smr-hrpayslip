@@ -805,17 +805,18 @@ if (isset($_POST['btn_casualemp'])) {
     $txt_work_status = $_POST['txt_work_status'];
     $txt_years_of_service = $_POST['txt_years_of_service'];
     $txt_nature_of_work = $_POST['txt_nature_of_work'];
+    $txt_specified_work = $_POST['txt_specified_work'];
     $txt_status = $_POST['txt_status'];
 
     // Prepare the query using prepared statements
-    $query = "INSERT INTO tbl_casual (employee, dob, sex, level_cs, work_status, year_service, nature_work, status) 
-              VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+    $query = "INSERT INTO tbl_casual (employee, dob, sex, level_cs, work_status, year_service, nature_work, specified_work, active_status) 
+              VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
     $stmt = mysqli_prepare($con, $query);
 
     // Check if the statement preparation was successful
     if ($stmt) {
         // Bind parameters to the prepared statement
-        mysqli_stmt_bind_param($stmt, "ssssssss", $txt_employee, $txt_dob, $txt_sex, $txt_cs_eligibility, $txt_work_status, $txt_years_of_service, $txt_nature_of_work, $txt_status);
+        mysqli_stmt_bind_param($stmt, "sssssssss", $txt_employee, $txt_dob, $txt_sex, $txt_cs_eligibility, $txt_work_status, $txt_years_of_service, $txt_nature_of_work, $txt_specified_work, $txt_status);
 
         // Execute the statement
         $result = mysqli_stmt_execute($stmt);
