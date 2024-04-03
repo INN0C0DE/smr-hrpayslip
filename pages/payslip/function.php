@@ -834,3 +834,20 @@ if (isset($_POST['btn_casualemp'])) {
         die("Statement preparation failed: " . mysqli_error($con));
     }
 }
+
+// delete function for casual employee
+if (isset($_POST['btn_deletecasual']) && isset($_POST['chk_delete'])) {
+    foreach ($_POST['chk_delete'] as $value) {
+        // Sanitize the input to prevent SQL injection
+        $safe_value = mysqli_real_escape_string($con, $value);
+
+        $delete_query = mysqli_query($con, "DELETE from tbl_casual where oid = '$safe_value' ") or die('Error: ' . mysqli_error($con));
+
+        if ($delete_query) {
+            $_SESSION['delete'] = 1;
+        } else {
+            $_SESSION['delete'] = 0;
+        }
+    }
+    header("location: " . $_SERVER['REQUEST_URI']);
+}

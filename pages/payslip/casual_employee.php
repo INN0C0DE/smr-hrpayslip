@@ -64,7 +64,7 @@ if (!isset($_SESSION['role'])) {
                         <div class="box-header">
                             <div style="padding:10px;">
                                 <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#addpayslip"><i class="fa fa-plus-square" aria-hidden="true"></i> Add Casual Employee</button>
-                                <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deletepayslip"><i class="fa fa-trash" aria-hidden="true"></i> Delete</button>
+                                <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deletecasual"><i class="fa fa-trash" aria-hidden="true"></i> Delete</button>
                                 <!-- <span style="float: right;">
                                     <button class="btn btn-success btn-sm" data-toggle="modal" data-target="#selectrows"><i class="fa fa-print" aria-hidden="true"></i> Print Selected</button>
                                     <button class="btn btn-success btn-sm" data-toggle="modal" data-target="#selectprint"><i class="fa fa-print" aria-hidden="true"></i> Print Monthly</button>
@@ -137,7 +137,7 @@ if (!$squery) {
         </tbody>
     </table>
 
-    <?php include "payrolldelete.php"; ?>
+    <?php include "delete_casual.php"; ?>
 </form>
 
                         </div><!-- /.box-body -->
