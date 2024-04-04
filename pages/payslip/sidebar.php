@@ -1,5 +1,5 @@
 
-<div class="sider">
+<div class="sider sideNav">
     
 
 <div class="dropdown">

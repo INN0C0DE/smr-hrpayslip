@@ -11,6 +11,18 @@
         background-color: yellow;
         /* Change this to your desired highlight color */
     }
+
+    /* @media print {
+            .sideNav {
+                display: none !important;
+            }
+            .tbPrint {
+                overflow: unset !important;
+            }
+            .hideBTN {
+                display: none !important;
+            }
+        } */
 </style>
 
 
@@ -65,8 +77,9 @@ if (!isset($_SESSION['role'])) {
                     <div class="box">
                         <div class="box-header">
                             <div style="padding:10px;">
-                                <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#addpayslip"><i class="fa fa-plus-square" aria-hidden="true"></i> Add Casual Employee</button>
-                                <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deletecasual"><i class="fa fa-trash" aria-hidden="true"></i> Delete</button>
+                                <button class="btn btn-primary btn-sm hideBTN" data-toggle="modal" data-target="#addpayslip"><i class="fa fa-plus-square" aria-hidden="true"></i> Add Casual Employee</button>
+                                <button class="btn btn-danger btn-sm hideBTN" data-toggle="modal" data-target="#deletecasual"><i class="fa fa-trash" aria-hidden="true"></i> Delete</button>
+                                <button class="btn btn-success btn-sm hideBTN" data-toggle="modal" data-target="#selectrows" onclick="window.print()"><i class="fa fa-print" aria-hidden="true"></i> Generate Report</button>
                                 <!-- <span style="float: right;">
                                     <button class="btn btn-success btn-sm" data-toggle="modal" data-target="#selectrows"><i class="fa fa-print" aria-hidden="true"></i> Print Selected</button>
                                     <button class="btn btn-success btn-sm" data-toggle="modal" data-target="#selectprint"><i class="fa fa-print" aria-hidden="true"></i> Print Monthly</button>
@@ -79,7 +92,7 @@ if (!isset($_SESSION['role'])) {
                         <!-- /.box-header -->
                         <div class="box-body table-responsive">
                             <form method="post">
-                                <table id="table" class="table table-bordered table-striped">
+                                <table id="table" class="table table-bordered table-striped tbPrint">
                                     <thead>
                                         <tr>
                                             <th><input type="checkbox" name="chk_delete[]" class="cbxMain" onchange="checkMain(this)" /></th>
