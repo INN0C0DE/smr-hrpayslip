@@ -93,9 +93,7 @@ if (!isset($_SESSION['role'])) {
                                             <th>Area Code</th>
                                             <th>Area Type</th>
                                             <th>Level</th>
-                                            <th>Last Name</th>
-                                            <th>First Name</th>
-                                            <th>Middle Name</th>
+                                            <th>Employee</th>
                                             <th>Sex</th>
                                             <th>Date of Birth</th>
                                             <th>TIN</th>
