@@ -26,9 +26,45 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="txt_salary_grade">Salary Grade:</label>
-                                <input name="txt_salary_grade" class="form-control input-sm" id="txt_salary_grade" type="text" required />
-                            </div>
+                            <label for="txt_salary_grade">Salary Grade:</label>
+                            <select name="txt_salary_grade" id="txt_salary_grade" class="form-control input-sm" required>
+                                <option value="" disabled selected>Select Salary Grade</option>
+                                <option value="SG 1">SG 1</option>
+                                <option value="SG 2">SG 2</option>
+                                <option value="SG 3">SG 3</option>
+                                <option value="SG 4">SG 4</option>
+                                <option value="SG 5">SG 5</option>
+                                <option value="SG 6">SG 6</option>
+                                <option value="SG 7">SG 7</option>
+                                <option value="SG 8">SG 8</option>
+                                <option value="SG 9">SG 9</option>
+                                <option value="SG 10">SG 10</option>
+                                <option value="SG 11">SG 11</option>
+                                <option value="SG 12">SG 12</option>
+                                <option value="SG 13">SG 13</option>
+                                <option value="SG 14">SG 14</option>
+                                <option value="SG 15">SG 15</option>
+                                <option value="SG 16">SG 16</option>
+                                <option value="SG 17">SG 17</option>
+                                <option value="SG 18">SG 18</option>
+                                <option value="SG 19">SG 19</option>
+                                <option value="SG 20">SG 20</option>
+                                <option value="SG 21">SG 21</option>
+                                <option value="SG 22">SG 22</option>
+                                <option value="SG 23">SG 23</option>
+                                <option value="SG 24">SG 24</option>
+                                <option value="SG 25">SG 25</option>
+                                <option value="SG 26">SG 26</option>
+                                <option value="SG 27">SG 27</option>
+                                <option value="SG 28">SG 28</option>
+                                <option value="SG 29">SG 29</option>
+                                <option value="SG 30">SG 30</option>
+                                <option value="SG 31">SG 31</option>
+                                <option value="SG 32">SG 32</option>
+                                <option value="SG 33">SG 33</option>
+                            </select>
+                        </div>
+
 
                             <div class="form-group">
                                 <label for="txt_authorized_annual_salary">Authorized Annual Salary:</label>

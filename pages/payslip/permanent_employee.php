@@ -67,6 +67,7 @@ if (!isset($_SESSION['role'])) {
                             <div style="padding:10px;">
                                 <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#addpayslip"><i class="fa fa-plus-square" aria-hidden="true"></i> Add Casual Employee</button>
                                 <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deletecasual"><i class="fa fa-trash" aria-hidden="true"></i> Delete</button>
+                                <button class="btn btn-success btn-sm hideBTN" data-toggle="modal" data-target="#selectrows" onclick="window.print()"><i class="fa fa-print" aria-hidden="true"></i> Generate Report</button>
                                 <!-- <span style="float: right;">
                                     <button class="btn btn-success btn-sm" data-toggle="modal" data-target="#selectrows"><i class="fa fa-print" aria-hidden="true"></i> Print Selected</button>
                                     <button class="btn btn-success btn-sm" data-toggle="modal" data-target="#selectprint"><i class="fa fa-print" aria-hidden="true"></i> Print Monthly</button>
@@ -109,9 +110,9 @@ if (!isset($_SESSION['role'])) {
                                     // Fetching data from the database
                                     $squery = mysqli_query($con, "SELECT c.*, e.fname, e.mname, e.lname, e.suffix, nw.nof AS nature_of_work 
                                                 FROM tbl_permanent c 
-                                                INNER JOIN tbl_employee e ON c.employee = e.oid
+                                                INNER JOIN tbl_employee e ON c.employee_name = e.oid
                                                 LEFT JOIN tbl_naturework nw ON c.nature_work = nw.oid");
-
+                                
                                     if (!$squery) {
                                         // Error handling
                                         echo "Error: " . mysqli_error($con);
