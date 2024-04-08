@@ -106,65 +106,65 @@ if (!isset($_SESSION['role'])) {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php
-                                    // Fetching data from the database
-                                    $squery = mysqli_query($con, "SELECT c.*, e.fname, e.mname, e.lname, e.suffix, nw.nof AS nature_of_work 
-                                                FROM tbl_permanent c 
-                                                INNER JOIN tbl_employee e ON c.employee_name = e.oid
-                                                LEFT JOIN tbl_naturework nw ON c.nature_work = nw.oid");
+                                <?php
+                                // Fetching data from the database
+                                $squery = mysqli_query($con, "SELECT c.*, e.fname, e.mname, e.lname, e.suffix
+                                            FROM tbl_permanent c 
+                                            INNER JOIN tbl_employee e ON c.employee_name = e.oid");
                                 
-                                    if (!$squery) {
-                                        // Error handling
-                                        echo "Error: " . mysqli_error($con);
-                                    } else {
-                                        while ($row = mysqli_fetch_assoc($squery)) {
-                                            // Sanitize output
-                                            $organizationalUnit = htmlspecialchars($row['organizational_unit']);
-                                            $itemNumber = htmlspecialchars($row['item_number']);
-                                            $positionTitle = htmlspecialchars($row['position_title']);
-                                            $salaryGrade = htmlspecialchars($row['salary_grade']);
-                                            $authorizedAnnualSalary = htmlspecialchars($row['authorized_annual_salary']);
-                                            $actualAnnualSalary = htmlspecialchars($row['actual_annual_salary']);
-                                            $step = htmlspecialchars($row['step']);
-                                            $areaCode = htmlspecialchars($row['area_code']);
-                                            $areaType = htmlspecialchars($row['area_type']);
-                                            $level = htmlspecialchars($row['level']);
-                                            $employeeName = htmlspecialchars($row['lname'] . ', ' . $row['fname'] . ' ' . $row['suffix'] . ' ' . $row['mname']);
-                                            $sex = htmlspecialchars($row['sex']);
-                                            $dob = htmlspecialchars($row['dob']);
-                                            $tin = htmlspecialchars($row['tin']);
-                                            $dateOfOriginalAppointment = htmlspecialchars($row['date_of_original_appointment']);
-                                            $dateOfLastPromotion = htmlspecialchars($row['date_of_last_promotion']);
-                                            $status = htmlspecialchars($row['status']);
-                                            $civilServiceEligibility = htmlspecialchars($row['civil_service_eligibility']);
-                                            $comment = htmlspecialchars($row['comment']);
+                                if (!$squery) {
+                                    // Error handling
+                                    echo "Error: " . mysqli_error($con);
+                                } else {
+                                    while ($row = mysqli_fetch_assoc($squery)) {
+                                        // Sanitize output
+                                        $organizationalUnit = htmlspecialchars($row['organizational_unit']);
+                                        $itemNumber = htmlspecialchars($row['item_number']);
+                                        $positionTitle = htmlspecialchars($row['position_title']);
+                                        $salaryGrade = htmlspecialchars($row['salary_grade']);
+                                        $authorizedAnnualSalary = htmlspecialchars($row['authorized_annual_salary']);
+                                        $actualAnnualSalary = htmlspecialchars($row['actual_annual_salary']);
+                                        $step = htmlspecialchars($row['step']);
+                                        $areaCode = htmlspecialchars($row['area_code']);
+                                        $areaType = htmlspecialchars($row['area_type']);
+                                        $level = htmlspecialchars($row['level']);
+                                        $employeeName = htmlspecialchars($row['lname'] . ', ' . $row['fname'] . ' ' . $row['suffix'] . ' ' . $row['mname']);
+                                        $sex = htmlspecialchars($row['permanent_sex']);
+                                        $dob = htmlspecialchars($row['permanent_dob']);
+                                        $tin = htmlspecialchars($row['tin']);
+                                        $dateOfOriginalAppointment = htmlspecialchars($row['date_original_appointment']);
+                                        $dateOfLastPromotion = htmlspecialchars($row['date_last_promotion']);
+                                        $status = htmlspecialchars($row['permanent_status']);
+                                        $civilServiceEligibility = htmlspecialchars($row['cs_eligibility']);
+                                        $comment = htmlspecialchars($row['permanent_comment']);
 
-                                            echo '<tr>
-                                                <td><input type="checkbox" name="chk_delete[]" class="chk_delete" value="' . $row['oid'] . '"  /></td>
-                                                <td>' . $organizationalUnit . '</td>
-                                                <td>' . $itemNumber . '</td>
-                                                <td>' . $positionTitle . '</td>
-                                                <td>' . $salaryGrade . '</td>
-                                                <td>' . $authorizedAnnualSalary . '</td>
-                                                <td>' . $actualAnnualSalary . '</td>
-                                                <td>' . $step . '</td>
-                                                <td>' . $areaCode . '</td>
-                                                <td>' . $areaType . '</td>
-                                                <td>' . $level . '</td>
-                                                <td>' . $employeeName . '</td>
-                                                <td>' . $sex . '</td>
-                                                <td>' . $dob . '</td>
-                                                <td>' . $tin . '</td>
-                                                <td>' . $dateOfOriginalAppointment . '</td>
-                                                <td>' . $dateOfLastPromotion . '</td>
-                                                <td>' . $status . '</td>
-                                                <td>' . $civilServiceEligibility . '</td>
-                                                <td>' . $comment . '</td>
-                                            </tr>';
-                                        }
+                                        echo '<tr>
+                                            <td><input type="checkbox" name="chk_delete[]" class="chk_delete" value="' . $row['oid'] . '"  /></td>
+                                            <td>' . $organizationalUnit . '</td>
+                                            <td>' . $itemNumber . '</td>
+                                            <td>' . $positionTitle . '</td>
+                                            <td>' . $salaryGrade . '</td>
+                                            <td>' . $authorizedAnnualSalary . '</td>
+                                            <td>' . $actualAnnualSalary . '</td>
+                                            <td>' . $step . '</td>
+                                            <td>' . $areaCode . '</td>
+                                            <td>' . $areaType . '</td>
+                                            <td>' . $level . '</td>
+                                            <td>' . $employeeName . '</td>
+                                            <td>' . $sex . '</td>
+                                            <td>' . $dob . '</td>
+                                            <td>' . $tin . '</td>
+                                            <td>' . $dateOfOriginalAppointment . '</td>
+                                            <td>' . $dateOfLastPromotion . '</td>
+                                            <td>' . $status . '</td>
+                                            <td>' . $civilServiceEligibility . '</td>
+                                            <td>' . $comment . '</td>
+                                        </tr>';
                                     }
-                                    ?>
-                                </tbody>
+                                }
+                                ?>
+                            </tbody>
+
                             </table>
                             <?php include "delete_permanent.php"; ?>
                         </form>
