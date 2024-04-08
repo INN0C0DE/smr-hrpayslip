@@ -1,5 +1,5 @@
 <!-- ===== DELETE MODAL ==== -->
-<!-- <div id="deletecasual" class="modal fade">
+<div id="deletepermanent" class="modal fade">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -11,9 +11,9 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">No</button>
-                <input type="submit" class="btn btn-primary btn-sm" name="btn_deletecasual" id="btn_deletecasual" value="Yes" />
+                <input type="submit" class="btn btn-primary btn-sm" name="btn_deletepermanent" id="btn_deletepermanent" value="Yes" />
             </div>
         </div>
     </div>
-</div> -->
+</div>
 <!-- ===== END OF DELETE MODAL ===== -->

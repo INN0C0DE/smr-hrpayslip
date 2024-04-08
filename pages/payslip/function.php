@@ -878,8 +878,8 @@ if (isset($_POST['btn_add_permanent_employee'])) {
     $txt_comment = $_POST['txt_comment'];
 
     // Prepare the query using prepared statements
-    $query = "INSERT INTO tbl_permanent (organizational_unit, item_number, position_title, salary_grade, authorized_annual_salary, actual_annual_salary, step, area_code, area_type, level, employee, sex, dob, tin, date_of_original_appointment, date_of_last_promotion, status, civil_service_eligibility, comment) 
-              VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    $query = "INSERT INTO tbl_permanent (organizational_unit, item_number, position_title, salary_grade, authorized_annual_salary, actual_annual_salary, step, area_code, area_type, level, employee_name, permanent_sex, permanent_dob, tin, date_original_appointment, date_last_promotion, permanent_status, cs_eligibility, permanent_comment) 
+              VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
     $stmt = mysqli_prepare($con, $query);
 
     // Check if the statement preparation was successful
