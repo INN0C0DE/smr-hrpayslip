@@ -851,3 +851,73 @@ if (isset($_POST['btn_deletecasual']) && isset($_POST['chk_delete'])) {
     }
     header("location: " . $_SERVER['REQUEST_URI']);
 }
+
+// ADD FUNCTION FOR PERMANENT EMPLOYEE
+
+// Check if the form for adding permanent employee is submitted
+if (isset($_POST['btn_add_permanent_employee'])) {
+    // Get form data
+    $txt_organizational_unit = $_POST['txt_organizational_unit'];
+    $txt_item_number = $_POST['txt_item_number'];
+    $txt_position_title = $_POST['txt_position_title'];
+    $txt_salary_grade = $_POST['txt_salary_grade'];
+    $txt_authorized_annual_salary = $_POST['txt_authorized_annual_salary'];
+    $txt_actual_annual_salary = $_POST['txt_actual_annual_salary'];
+    $txt_step = $_POST['txt_step'];
+    $txt_area_code = $_POST['txt_area_code'];
+    $txt_area_type = $_POST['txt_area_type'];
+    $txt_level = $_POST['txt_level'];
+    $txt_employee = $_POST['txt_employee'];
+    $txt_sex = $_POST['txt_sex'];
+    $txt_dob = $_POST['txt_dob'];
+    $txt_tin = $_POST['txt_tin'];
+    $txt_date_of_original_appointment = $_POST['txt_date_of_original_appointment'];
+    $txt_date_of_last_promotion = $_POST['txt_date_of_last_promotion'];
+    $txt_status = $_POST['txt_status'];
+    $txt_civil_service_eligibility = $_POST['txt_civil_service_eligibility'];
+    $txt_comment = $_POST['txt_comment'];
+
+    // Prepare the query using prepared statements
+    $query = "INSERT INTO tbl_permanent (organizational_unit, item_number, position_title, salary_grade, authorized_annual_salary, actual_annual_salary, step, area_code, area_type, level, employee, sex, dob, tin, date_of_original_appointment, date_of_last_promotion, status, civil_service_eligibility, comment) 
+              VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    $stmt = mysqli_prepare($con, $query);
+
+    // Check if the statement preparation was successful
+    if ($stmt) {
+        // Bind parameters to the prepared statement
+        mysqli_stmt_bind_param($stmt, "sssssssssssssssssss", $txt_organizational_unit, $txt_item_number, $txt_position_title, $txt_salary_grade, $txt_authorized_annual_salary, $txt_actual_annual_salary, $txt_step, $txt_area_code, $txt_area_type, $txt_level, $txt_employee, $txt_sex, $txt_dob, $txt_tin, $txt_date_of_original_appointment, $txt_date_of_last_promotion, $txt_status, $txt_civil_service_eligibility, $txt_comment);
+
+        // Execute the statement
+        $result = mysqli_stmt_execute($stmt);
+
+        if ($result) {
+            $_SESSION['added'] = 1;
+            header("location: " . $_SERVER['REQUEST_URI']);
+            exit();
+        } else {
+            $_SESSION['duplicateuser'] = 1;
+            header("location: " . $_SERVER['REQUEST_URI']);
+            exit();
+        }
+    } else {
+        die("Statement preparation failed: " . mysqli_error($con));
+    }
+}
+
+//DELETE FUNCTION PERMANENT EMPLOYEE
+
+if (isset($_POST['btn_deletepermanent']) && isset($_POST['chk_delete'])) {
+    foreach ($_POST['chk_delete'] as $value) {
+        // Sanitize the input to prevent SQL injection
+        $safe_value = mysqli_real_escape_string($con, $value);
+
+        $delete_query = mysqli_query($con, "DELETE from tbl_permanent where oid = '$safe_value' ") or die('Error: ' . mysqli_error($con));
+
+        if ($delete_query) {
+            $_SESSION['delete'] = 1;
+        } else {
+            $_SESSION['delete'] = 0;
+        }
+    }
+    header("location: " . $_SERVER['REQUEST_URI']);
+}

@@ -65,7 +65,7 @@ if (!isset($_SESSION['role'])) {
                     <div class="box">
                         <div class="box-header">
                             <div style="padding:10px;">
-                                <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#addpayslip"><i class="fa fa-plus-square" aria-hidden="true"></i> Add Casual Employee</button>
+                                <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#addpayslip"><i class="fa fa-plus-square" aria-hidden="true"></i> Add Permanent Employee</button>
                                 <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deletecasual"><i class="fa fa-trash" aria-hidden="true"></i> Delete</button>
                                 <button class="btn btn-success btn-sm hideBTN" data-toggle="modal" data-target="#selectrows" onclick="window.print()"><i class="fa fa-print" aria-hidden="true"></i> Generate Report</button>
                                 <!-- <span style="float: right;">
