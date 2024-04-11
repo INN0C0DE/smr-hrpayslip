@@ -123,6 +123,7 @@ if (!isset($_SESSION['role'])) {
                                                 // Sanitize output
                                                 $employeeName = htmlspecialchars($row['lname'] . ', ' . $row['fname'] . ' ' . $row['suffix'] . ' ' . $row['mname']);
                                                 $dob = htmlspecialchars($row['dob']);
+                                                $formatted_dob = date("F j, Y", strtotime($dob));
                                                 $sex = htmlspecialchars($row['sex']);
                                                 $csEligibility = htmlspecialchars($row['level_cs']);
                                                 $workStatus = htmlspecialchars($row['work_status']);
@@ -134,7 +135,7 @@ if (!isset($_SESSION['role'])) {
                                                 echo '<tr>
                                     <td><input type="checkbox" name="chk_delete[]" class="chk_delete" value="' . $row['oid'] . '"  /></td>
                                     <td>' . $employeeName . '</td>
-                                    <td>' . $dob . '</td>
+                                    <td>' . $formatted_dob . '</td>
                                     <td>' . $sex . '</td>
                                     <td>' . $csEligibility . '</td>
                                     <td>' . $workStatus . '</td>

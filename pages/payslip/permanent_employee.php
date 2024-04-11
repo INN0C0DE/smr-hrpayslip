@@ -131,9 +131,12 @@ if (!isset($_SESSION['role'])) {
                                         $employeeName = htmlspecialchars($row['lname'] . ', ' . $row['fname'] . ' ' . $row['suffix'] . ' ' . $row['mname']);
                                         $sex = htmlspecialchars($row['permanent_sex']);
                                         $dob = htmlspecialchars($row['permanent_dob']);
+                                        $formatted_dob = date("F j, Y", strtotime($dob));
                                         $tin = htmlspecialchars($row['tin']);
                                         $dateOfOriginalAppointment = htmlspecialchars($row['date_original_appointment']);
+                                        $formatted_dooa = date("F j, Y", strtotime($dateOfOriginalAppointment));
                                         $dateOfLastPromotion = htmlspecialchars($row['date_last_promotion']);
+                                        $formatted_dolp = date("F j, Y", strtotime($dateOfLastPromotion));
                                         $status = htmlspecialchars($row['permanent_status']);
                                         $civilServiceEligibility = htmlspecialchars($row['cs_eligibility']);
                                         $comment = htmlspecialchars($row['permanent_comment']);
@@ -152,10 +155,10 @@ if (!isset($_SESSION['role'])) {
                                             <td>' . $level . '</td>
                                             <td>' . $employeeName . '</td>
                                             <td>' . $sex . '</td>
-                                            <td>' . $dob . '</td>
+                                            <td>' . $formatted_dob . '</td>
                                             <td>' . $tin . '</td>
-                                            <td>' . $dateOfOriginalAppointment . '</td>
-                                            <td>' . $dateOfLastPromotion . '</td>
+                                            <td>' . $formatted_dooa . '</td>
+                                            <td>' . $formatted_dolp . '</td>
                                             <td>' . $status . '</td>
                                             <td>' . $civilServiceEligibility . '</td>
                                             <td>' . $comment . '</td>

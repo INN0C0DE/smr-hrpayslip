@@ -78,7 +78,18 @@
 
                             <div class="form-group">
                                 <label for="txt_step">Step:</label>
-                                <input name="txt_step" class="form-control input-sm" id="txt_step" type="text" required />
+                                
+                                <select name="txt_step" id="txt_step" class="form-control input-sm" required>
+                                    <option value="" disabled selected>Select Step</option>
+                                    <option value="Step 1">Step 1</option>
+                                    <option value="Step 2">Step 2</option>
+                                    <option value="Step 3">Step 3</option>
+                                    <option value="Step 4">Step 4</option>
+                                    <option value="Step 5">Step 5</option>
+                                    <option value="Step 6">Step 6</option>
+                                    <option value="Step 7">Step 7</option>
+                                    <option value="Steps">Steps</option>
+                                </select>
                             </div>
 
                             <div class="form-group">
