@@ -17,9 +17,9 @@
             <div class="col-md-12">
               <!-- Certificate contents here -->
               <div id="printContent" style="  display: grid !important;
-grid-template-columns: 1fr 1fr !important; 
-grid-template-rows: 1fr 1fr !important; 
-gap: 10px !important; ">
+                                              grid-template-columns: 1fr 1fr !important; 
+                                              grid-template-rows: 1fr 1fr !important; 
+                                              gap: 10px !important; ">
 
                 <?php
                 include "connection.php";

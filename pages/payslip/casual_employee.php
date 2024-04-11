@@ -11,20 +11,7 @@
         background-color: yellow;
         /* Change this to your desired highlight color */
     }
-
-    /* @media print {
-            .sideNav {
-                display: none !important;
-            }
-            .tbPrint {
-                overflow: unset !important;
-            }
-            .hideBTN {
-                display: none !important;
-            }
-        } */
 </style>
-
 
 <?php
 session_start();
@@ -37,15 +24,12 @@ if (!isset($_SESSION['role'])) {
     <body class="skin-black">
         <!-- header logo: style can be found in header.less -->
         <?php
-
         include "connection.php";
         ?>
-
 
         <?php
         if ($_SESSION['role'] == "Admin") {
         ?>
-
             <nav class="admin__nav">
                 <figure class="admin__img--wrapper">
                     <img src="../../assets/Images/SAN MAT WHITE.png" class="admin__img" alt="">
@@ -79,60 +63,52 @@ if (!isset($_SESSION['role'])) {
                             <div style="padding:10px;">
                                 <button class="btn btn-primary btn-sm hideBTN" data-toggle="modal" data-target="#addpayslip"><i class="fa fa-plus-square" aria-hidden="true"></i> Add Casual Employee</button>
                                 <button class="btn btn-danger btn-sm hideBTN" data-toggle="modal" data-target="#deletecasual"><i class="fa fa-trash" aria-hidden="true"></i> Delete</button>
-                                <button class="btn btn-success btn-sm hideBTN" data-toggle="modal" data-target="#selectrows" onclick="window.print()"><i class="fa fa-print" aria-hidden="true"></i> Generate Report</button>
-                                <!-- <span style="float: right;">
-                                    <button class="btn btn-success btn-sm" data-toggle="modal" data-target="#selectrows"><i class="fa fa-print" aria-hidden="true"></i> Print Selected</button>
-                                    <button class="btn btn-success btn-sm" data-toggle="modal" data-target="#selectprint"><i class="fa fa-print" aria-hidden="true"></i> Print Monthly</button>
-                                    <button class="btn btn-success btn-sm" data-toggle="modal" data-target="#selectprintyear"><i class="fa fa-print" aria-hidden="true"></i> Print Year</button>
-
-                                </span> -->
+                                <button class="btn btn-success btn-sm hideBTN generate-report-btn"><i class="fa fa-print" aria-hidden="true"></i> Generate Report</button>
                             </div>
-
                         </div>
                         <!-- /.box-header -->
                         <div class="box-body table-responsive">
-                            <form method="post">
-                                <table id="table" class="table table-bordered table-striped tbPrint">
-                                    <thead>
-                                        <tr>
-                                            <th><input type="checkbox" name="chk_delete[]" class="cbxMain" onchange="checkMain(this)" /></th>
-                                            <th>Employee</th>
-                                            <th>Date of Birth</th>
-                                            <th>Sex</th>
-                                            <th>Level of CS Eligibility</th>
-                                            <th>Work Status</th>
-                                            <th>Years of Service as JO/COS/MOA personnel</th>
-                                            <th>Nature of Work</th>
-                                            <th>Specified Work</th>
-                                            <th>Status</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php
-                                        // Fetching data from the database
-                                        $squery = mysqli_query($con, "SELECT c.*, e.fname, e.mname, e.lname, e.suffix, nw.nof AS nature_of_work 
+                            <table id="table" class="table table-bordered table-striped tbPrint">
+                                <thead>
+                                    <tr>
+                                        <th><input type="checkbox" name="chk_delete[]" class="cbxMain" onchange="checkMain(this)" /></th>
+                                        <th>Employee</th>
+                                        <th>Date of Birth</th>
+                                        <th>Sex</th>
+                                        <th>Level of CS Eligibility</th>
+                                        <th>Work Status</th>
+                                        <th>Years of Service as JO/COS/MOA personnel</th>
+                                        <th>Nature of Work</th>
+                                        <th>Specified Work</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php
+                                    // Fetching data from the database
+                                    $squery = mysqli_query($con, "SELECT c.*, e.fname, e.mname, e.lname, e.suffix, nw.nof AS nature_of_work 
                                                     FROM tbl_casual c 
                                                     INNER JOIN tbl_employee e ON c.employee = e.oid
                                                     LEFT JOIN tbl_naturework nw ON c.nature_work = nw.oid");
 
-                                        if (!$squery) {
-                                            // Error handling
-                                            echo "Error: " . mysqli_error($con);
-                                        } else {
-                                            while ($row = mysqli_fetch_assoc($squery)) {
-                                                // Sanitize output
-                                                $employeeName = htmlspecialchars($row['lname'] . ', ' . $row['fname'] . ' ' . $row['suffix'] . ' ' . $row['mname']);
-                                                $dob = htmlspecialchars($row['dob']);
-                                                $formatted_dob = date("F j, Y", strtotime($dob));
-                                                $sex = htmlspecialchars($row['sex']);
-                                                $csEligibility = htmlspecialchars($row['level_cs']);
-                                                $workStatus = htmlspecialchars($row['work_status']);
-                                                $yearsOfService = htmlspecialchars($row['year_service']);
-                                                $specifiedWork = htmlspecialchars($row['specified_work']);
-                                                $activestatus = htmlspecialchars($row['active_status']);
-                                                $natureOfWork = isset($row['nature_of_work']) ? htmlspecialchars($row['nature_of_work']) : "N/A";
+                                    if (!$squery) {
+                                        // Error handling
+                                        echo "Error: " . mysqli_error($con);
+                                    } else {
+                                        while ($row = mysqli_fetch_assoc($squery)) {
+                                            // Sanitize output
+                                            $employeeName = htmlspecialchars($row['lname'] . ', ' . $row['fname'] . ' ' . $row['suffix'] . ' ' . $row['mname']);
+                                            $dob = htmlspecialchars($row['dob']);
+                                            $formatted_dob = date("F j, Y", strtotime($dob));
+                                            $sex = htmlspecialchars($row['sex']);
+                                            $csEligibility = htmlspecialchars($row['level_cs']);
+                                            $workStatus = htmlspecialchars($row['work_status']);
+                                            $yearsOfService = htmlspecialchars($row['year_service']);
+                                            $specifiedWork = htmlspecialchars($row['specified_work']);
+                                            $activestatus = htmlspecialchars($row['active_status']);
+                                            $natureOfWork = isset($row['nature_of_work']) ? htmlspecialchars($row['nature_of_work']) : "N/A";
 
-                                                echo '<tr>
+                                            echo '<tr>
                                     <td><input type="checkbox" name="chk_delete[]" class="chk_delete" value="' . $row['oid'] . '"  /></td>
                                     <td>' . $employeeName . '</td>
                                     <td>' . $formatted_dob . '</td>
@@ -144,48 +120,84 @@ if (!isset($_SESSION['role'])) {
                                     <td>' . $specifiedWork . '</td>
                                     <td>' . $activestatus . '</td>
                                 </tr>';
-                                            }
                                         }
-                                        ?>
-
-
-
-                                    </tbody>
-                                </table>
-
-                                <?php include "delete_casual.php"; ?>
-                            </form>
-
+                                    }
+                                    ?>
+                                </tbody>
+                            </table>
+                            <?php include "delete_casual.php"; ?>
                         </div><!-- /.box-body -->
                     </div><!-- /.box -->
                     <?php include "add_modal_casual.php"; ?>
-
-
                     <?php include "function.php"; ?>
-
                 </section><!-- /.content -->
-
             </div> <!-- /.row -->
-
-
         <?php } ?>
-
     <?php }
 include "../footer.php"; ?>
 
-    <script type="text/javascript">
-        $(function() {
-            $("#table").dataTable({
-                "deferRender": true,
-                "paging": true,
-                "aoColumnDefs": [{
-                    "bSortable": false,
-                    "aTargets": [0]
-                }],
-                "aaSorting": [],
-            });
+<script type="text/javascript">
+    $(function() {
+        var table = $("#table").DataTable({
+            "deferRender": true,
+            "paging": true,
+            "aoColumnDefs": [{
+                "bSortable": false,
+                "aTargets": [0]
+            }],
+            "aaSorting": [],
+            "language": { // Customize the language options
+                "lengthMenu": "Show _MENU_ entries", // Show the "Records per page" dropdown
+                "info": "", // Remove the "Showing x to y of z entries" text
+            }
         });
-    </script>
+
+        // Print only the table and its data
+        $('.generate-report-btn').on('click', function() {
+            // Hide DataTables elements
+            $('.dataTables_length, .dataTables_filter, .dataTables_info, .dataTables_paginate').hide();
+
+            // Remove delete confirmation dialog from the DOM
+            $('#deletecasual').remove();
+
+            // Clone the table
+            var clonedTable = $('#table').clone();
+
+            // Remove the first column (index 0) from each row
+            clonedTable.find('tr').each(function() {
+                $(this).find('td:first').remove();
+                $(this).find('th:first').remove();
+            });
+
+            // Generate HTML content for the modified table
+            var content = clonedTable.prop('outerHTML');
+
+            var styles = `
+            <style>
+                table {
+                    border-collapse: collapse;
+                    width: 100%;
+                }
+                th, td {
+                    border: 1px solid black;
+                    padding: 8px;
+                    text-align: left;
+                }
+                th {
+                    background-color: #f2f2f2;
+                }
+            </style>`;
+            var newWindow = window.open('', '_blank');
+            newWindow.document.open();
+            newWindow.document.write('<html><head><title>Casual Employee Report</title>' + styles + '</head><body>');
+            newWindow.document.write(content); // Write the modified table
+            newWindow.document.write('</body></html>');
+            newWindow.document.close();
+            newWindow.print();
+        });
+    });
+</script>
+
     </body>
 
 </html>
