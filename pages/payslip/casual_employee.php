@@ -185,14 +185,21 @@ include "../footer.php"; ?>
                 border: 1px solid black;
                 padding: 8px;
                 text-align: left;
+                
             }
             th {
                 background-color: #f2f2f2;
+                font-family: Arial, sans-serif;
+            }
+            h1 {
+                font-family: Arial, sans-serif; /* Change the font here */
+                text-align: center;
             }
         </style>`;
         var newWindow = window.open('', '_blank');
         newWindow.document.open();
         newWindow.document.write('<html><head><title>Casual Employee Report</title>' + styles + '</head><body>');
+        newWindow.document.write('<h1 style="text-align: center;">Casual Employee Report</h1>');
         newWindow.document.write(content); // Write the modified table
         newWindow.document.write('</body></html>');
         newWindow.document.close();
