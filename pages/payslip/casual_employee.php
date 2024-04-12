@@ -137,66 +137,69 @@ if (!isset($_SESSION['role'])) {
 include "../footer.php"; ?>
 
 <script type="text/javascript">
-    $(function() {
-        var table = $("#table").DataTable({
-            "deferRender": true,
-            "paging": true,
-            "aoColumnDefs": [{
-                "bSortable": false,
-                "aTargets": [0]
-            }],
-            "aaSorting": [],
-            "language": { // Customize the language options
-                "lengthMenu": "Show _MENU_ entries", // Show the "Records per page" dropdown
-                "info": "", // Remove the "Showing x to y of z entries" text
-            }
-        });
-
-        // Print only the table and its data
-        $('.generate-report-btn').on('click', function() {
-            // Hide DataTables elements
-            $('.dataTables_length, .dataTables_filter, .dataTables_info, .dataTables_paginate').hide();
-
-            // Remove delete confirmation dialog from the DOM
-            $('#deletecasual').remove();
-
-            // Clone the table
-            var clonedTable = $('#table').clone();
-
-            // Remove the first column (index 0) from each row
-            clonedTable.find('tr').each(function() {
-                $(this).find('td:first').remove();
-                $(this).find('th:first').remove();
-            });
-
-            // Generate HTML content for the modified table
-            var content = clonedTable.prop('outerHTML');
-
-            var styles = `
-            <style>
-                table {
-                    border-collapse: collapse;
-                    width: 100%;
-                }
-                th, td {
-                    border: 1px solid black;
-                    padding: 8px;
-                    text-align: left;
-                }
-                th {
-                    background-color: #f2f2f2;
-                }
-            </style>`;
-            var newWindow = window.open('', '_blank');
-            newWindow.document.open();
-            newWindow.document.write('<html><head><title>Casual Employee Report</title>' + styles + '</head><body>');
-            newWindow.document.write(content); // Write the modified table
-            newWindow.document.write('</body></html>');
-            newWindow.document.close();
-            newWindow.print();
-        });
+        $(function() {
+    var table = $("#table").DataTable({
+        "deferRender": true,
+        "paging": true,
+        "aoColumnDefs": [{
+            "bSortable": false,
+            "aTargets": [0]
+        }],
+        "aaSorting": [],
+        "language": { // Customize the language options
+            "lengthMenu": "Show _MENU_ entries", // Show the "Records per page" dropdown
+            "info": "", // Remove the "Showing x to y of z entries" text
+        }
     });
-</script>
+
+    // Print only the table and its data
+    $('.generate-report-btn').on('click', function() {
+        // Disable pagination
+        table.page.len(-1).draw();
+
+        // Hide DataTables elements
+        $('.dataTables_length, .dataTables_filter, .dataTables_info, .dataTables_paginate').hide();
+
+        // Remove delete confirmation dialog from the DOM
+        $('#deletecasual').remove();
+
+        // Clone the table
+        var clonedTable = $('#table').clone();
+
+        // Remove the first column (index 0) from each row
+        clonedTable.find('tr').each(function() {
+            $(this).find('td:first').remove();
+            $(this).find('th:first').remove();
+        });
+
+        // Generate HTML content for the modified table
+        var content = clonedTable.prop('outerHTML');
+
+        var styles = `
+        <style>
+            table {
+                border-collapse: collapse;
+                width: 100%;
+            }
+            th, td {
+                border: 1px solid black;
+                padding: 8px;
+                text-align: left;
+            }
+            th {
+                background-color: #f2f2f2;
+            }
+        </style>`;
+        var newWindow = window.open('', '_blank');
+        newWindow.document.open();
+        newWindow.document.write('<html><head><title>Casual Employee Report</title>' + styles + '</head><body>');
+        newWindow.document.write(content); // Write the modified table
+        newWindow.document.write('</body></html>');
+        newWindow.document.close();
+        newWindow.print();
+    });
+});
+    </script>
 
     </body>
 
