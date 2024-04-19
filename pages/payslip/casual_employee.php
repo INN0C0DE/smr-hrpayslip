@@ -26,6 +26,7 @@ if (!isset($_SESSION['role'])) {
         <!-- header logo: style can be found in header.less -->
         <?php
         include "connection.php";
+        include "function_mod.php";
         ?>
 
         <?php
@@ -85,45 +86,7 @@ if (!isset($_SESSION['role'])) {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php
-                                    // Fetching data from the database
-                                    $squery = mysqli_query($con, "SELECT c.*, e.fname, e.mname, e.lname, e.suffix, nw.nof AS nature_of_work 
-                                                    FROM tbl_casual c 
-                                                    INNER JOIN tbl_employee e ON c.employee = e.oid
-                                                    LEFT JOIN tbl_naturework nw ON c.nature_work = nw.oid");
-
-                                    if (!$squery) {
-                                        // Error handling
-                                        echo "Error: " . mysqli_error($con);
-                                    } else {
-                                        while ($row = mysqli_fetch_assoc($squery)) {
-                                            // Sanitize output
-                                            $employeeName = htmlspecialchars($row['lname'] . ', ' . $row['fname'] . ' ' . $row['suffix'] . ' ' . $row['mname']);
-                                            $dob = htmlspecialchars($row['dob']);
-                                            $formatted_dob = date("F j, Y", strtotime($dob));
-                                            $sex = htmlspecialchars($row['sex']);
-                                            $csEligibility = htmlspecialchars($row['level_cs']);
-                                            $workStatus = htmlspecialchars($row['work_status']);
-                                            $yearsOfService = htmlspecialchars($row['year_service']);
-                                            $specifiedWork = htmlspecialchars($row['specified_work']);
-                                            $activestatus = htmlspecialchars($row['active_status']);
-                                            $natureOfWork = isset($row['nature_of_work']) ? htmlspecialchars($row['nature_of_work']) : "N/A";
-
-                                            echo '<tr>
-                                    <td><input type="checkbox" name="chk_delete[]" class="chk_delete" value="' . $row['oid'] . '"  /></td>
-                                    <td>' . $employeeName . '</td>
-                                    <td>' . $formatted_dob . '</td>
-                                    <td>' . $sex . '</td>
-                                    <td>' . $csEligibility . '</td>
-                                    <td>' . $workStatus . '</td>
-                                    <td>' . $yearsOfService . '</td>
-                                    <td>' . $natureOfWork . '</td>
-                                    <td>' . $specifiedWork . '</td>
-                                    <td>' . $activestatus . '</td>
-                                </tr>';
-                                        }
-                                    }
-                                    ?>
+                                    <?php echo fetch_top_five_data($connect); ?>
                                 </tbody>
                             </table>
                             <?php include "delete_casual.php"; ?>
