@@ -86,8 +86,7 @@ if($statement->execute($data))
             if($_POST['action'] == 'Update')
             {
                 $query = "UPDATE tbl_casual 
-                SET 
-                employee = :employee,
+                SET employee = :employee,
 
                 dob = :dob,
 
@@ -103,9 +102,9 @@ if($statement->execute($data))
 
                 specified_work = :specified_work,
 
-                active_status = :active_status,
+                active_status = :active_status
 
-                WHERE OID = '".$_POST["id"]."'
+                WHERE OID = '".$_POST["oid"]."'
                 ";
 
                 $statement = $connect->prepare($query);
@@ -115,7 +114,7 @@ if($statement->execute($data))
 
                     $output['success'] = '
                         <div class="alert alert-success alert-dismissible fade show" role="alert">
-                            Shift Updated Successfully!
+                             Updated Successfully!
                             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>

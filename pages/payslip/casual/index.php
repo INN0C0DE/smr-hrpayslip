@@ -49,7 +49,7 @@ include('function_mod.php');
                             <div class="row">
                                 <div class="col col-md-6"></div>
                                 <div class="col col-md-6" align="right">
-                                    <button type="button" name="add_data" id="add_data" class="btn btn-primary btn-sm" ><i class="fa fa-plus" aria-hidden="true"></i> Add Casual Employee</button>
+                                    <button type="button" name="add_data" id="add_data" class="btn btn-primary btn-sm" ><i class="fa fa-plus" aria-hidden="true"></i> Add Casual</button>
                                     <button type="button" name="print_data" id="print_data" class="btn btn-success btn-sm generate-report-btn"><i class="fa fa-plus" aria-hidden="true"></i> Generate Report</button>
                                 </div>
                             </div>
@@ -291,7 +291,7 @@ include('function_mod.php');
                                 });
 
                             }
-
+                            // add employee
                             function fetch_data(id) {
                                 var form_data = new FormData();
 
@@ -329,7 +329,7 @@ include('function_mod.php');
 
                                     _('active_status').value = responseData.active_status;
 
-                                    _('oid').value = id;
+                                    _('OID').value = id;
 
                                     _('action').value = 'Update';
 
@@ -341,6 +341,41 @@ include('function_mod.php');
 
                                 });
                             }
+
+                            // update employee
+                            function fetch_edit_data(id) {
+                                var form_data = new FormData();
+
+                                form_data.append('id', id);
+
+                                form_data.append('action', 'fetch');
+
+                                fetch('action.php', {
+                                    method: "POST",
+                                    body: form_data
+                                }).then(function(response) {
+                                    return response.json();
+                                }).then(function(responseData) {
+                                    _('employee').value = responseData.employee;
+                                    _('dob').value = responseData.dob;
+                                    _('sex').value = responseData.sex;
+                                    _('level_cs').value = responseData.level_cs;
+                                    _('work_status').value = responseData.work_status;
+                                    _('year_service').value = responseData.year_service;
+                                    _('nature_work').value = responseData.nature_work;
+                                    _('specified_work').value = responseData.specified_work;
+                                    _('active_status').value = responseData.active_status;
+
+                                    // Change values for update
+                                    _('oid').value = id;
+                                    _('action').value = 'Update';
+                                    _('modal_title').innerHTML = 'Update Employee'; // Change modal title
+                                    _('action_button').innerHTML = '<i class="fa fa-save" aria-hidden="true"></i> Update'; // Change action button text
+
+                                    open_modal();
+                                });
+                            }
+
 
                             function delete_data(id) {
                                 if (confirm("Are you sure you want to remove it?")) {

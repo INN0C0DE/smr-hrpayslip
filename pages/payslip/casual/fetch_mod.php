@@ -15,16 +15,20 @@ $search = empty($searchQuery) || $searchQuery === "null" ? "" : $searchQuery;
 $sortColumnIndex = filter_input(INPUT_GET, "sortColumn", FILTER_SANITIZE_NUMBER_INT);
 $sortDirection = filter_input(INPUT_GET, "sortDirection", FILTER_SANITIZE_STRING);
 
-$column = array("employee", "dob", "sex", "level_cs", "work_status", "year_service", "nof", "specified_work", "active_status");
+$column = array("t.lname","t.fname", "t.mname", "n.nof", "dob", "sex", "level_cs", "work_status", "year_service", "nof", "specified_work", "active_status");
 
 $query = "SELECT p.*, t.lname, t.fname, t.mname, n.nof
           FROM tbl_casual p
           INNER JOIN tbl_employee t ON p.employee = t.oid 
           INNER JOIN tbl_naturework n ON p.nature_work = n.oid
           WHERE 
-            p.employee LIKE '%" . $search . "%' 
+            t.lname LIKE '%" . $search . "%' 
+            OR t.lname LIKE '%" . $search . "%' 
+            OR t.fname LIKE '%" . $search . "%' 
+            OR t.mname LIKE '%" . $search . "%' 
+            OR n.nof LIKE '%" . $search . "%' 
             OR p.dob LIKE '%" . $search . "%' 
-            OR p.sex LIKE '%" . $search . "%' 
+            OR p.sex = '" . $search . "' 
             OR p.level_cs LIKE '%" . $search . "%' 
             OR p.work_status LIKE '%" . $search . "%' 
             OR p.year_service LIKE '%" . $search . "%' 
@@ -43,12 +47,17 @@ $query .= 'LIMIT ' . $start . ', ' . $length;
 $statement = $connect->prepare($query);
 $statement->execute();
 
+// Check if the query executed successfully
+if (!$statement) {
+    die("Query failed: " . $connect->errorInfo());
+}
+
 $number_filter_row = $statement->rowCount();
 
 $data = array();
 
 foreach ($statement as $row) {
-    $dob = date("F j, Y", strtotime($row['dob']));
+    $dob = date("m/d/Y", strtotime($row['dob']));
 
     $sub_array = array();
     $sub_array[] = $row['lname'] . ', ' . $row['fname'] . ' ' . $row['mname'];

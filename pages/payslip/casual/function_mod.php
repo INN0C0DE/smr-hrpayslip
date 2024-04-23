@@ -9,7 +9,7 @@ function fetch_top_five_data($connect)
         INNER JOIN tbl_employee t ON p.employee = t.oid 
       INNER JOIN tbl_naturework n ON p.nature_work = n.oid
       ORDER BY OID DESC 
-	LIMIT 10";
+      LIMIT 10";
 
     $result = $connect->query($query);
 
@@ -17,7 +17,7 @@ function fetch_top_five_data($connect)
 
     foreach ($result as $row) {
         // Format date of birth
-        $dob = date("F j, Y", strtotime($row['dob']));
+        $dob = date("m/d/Y", strtotime($row['dob']));
 
         $output .= '
         <tr>
@@ -30,10 +30,11 @@ function fetch_top_five_data($connect)
             <td>' . $row['nof'] . '</td>
             <td>' . $row['specified_work'] . '</td>
             <td>' . $row['active_status'] . '</td>
-            <td><button type="button" onclick="fetch_data(' . $row["oid"] . ')" class="btn btn-success btn-sm"><i class="fa fa-pen" aria-hidden="true"></i> Edit</button>
-			&nbsp;<button type="button" class="btn btn-danger btn-sm" onclick="delete_data(' . $row["oid"] . ')"><i class="fa fa-trash" aria-hidden="true"></i> Delete</button>
-			
-			</td>
+            <td>
+                <button type="button" onclick="fetch_edit_data(' . $row["oid"] . ')" class="btn btn-success btn-sm"><i class="fa fa-pen" aria-hidden="true"></i> Edit</button>
+                &nbsp;
+                <button type="button" class="btn btn-danger btn-sm" onclick="delete_data(' . $row["oid"] . ')"><i class="fa fa-trash" aria-hidden="true"></i> Delete</button>
+            </td>
         </tr>
         ';
     }
