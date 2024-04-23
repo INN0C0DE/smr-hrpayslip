@@ -109,13 +109,13 @@ if (!isset($_SESSION['role'])) {
                                 <tbody>
                                 <?php
                                 // Fetching data from the database
-                                $squery = mysqli_query($con, "SELECT c.*, e.fname, e.mname, e.lname, e.suffix
+                                $squery = mysqli_query($connect, "SELECT c.*, e.fname, e.mname, e.lname, e.suffix
                                             FROM tbl_permanent c 
                                             INNER JOIN tbl_employee e ON c.employee_name = e.oid");
                                 
                                 if (!$squery) {
                                     // Error handling
-                                    echo "Error: " . mysqli_error($con);
+                                    echo "Error: " . mysqli_error($connect);
                                 } else {
                                     while ($row = mysqli_fetch_assoc($squery)) {
                                         // Sanitize output

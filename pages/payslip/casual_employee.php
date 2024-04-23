@@ -1,10 +1,10 @@
 <!-- -- .- -.. . ....... -... -.-- ---... ....... .-. .-.-.- .- .-.-.- ... .-.-.- -.-. .-.-.- ....... -....- ....... .. -.-. - --- ....... .. -. - . .-. -. ....... ..--- ----- ..--- ....- -->
 <!DOCTYPE html>
 <html>
-<link rel="icon" href="../../assets/Images/seal.png">
-
+<link rel="icon" href="../../../assets/Images/seal.png">
+<link rel="stylesheet" href="../library/jstable.css">
 <head>
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="../style.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <style>
@@ -20,12 +20,12 @@ if (!isset($_SESSION['role'])) {
     header("Location: login.php");
 } else {
     ob_start();
-    include('../head_css.php'); ?>
+    include('../../head_css.php'); ?>
 
     <body class="skin-black">
         <!-- header logo: style can be found in header.less -->
         <?php
-        include "connection.php";
+        include "../connection.php";
         include "function_mod.php";
         ?>
 
@@ -34,7 +34,7 @@ if (!isset($_SESSION['role'])) {
         ?>
             <nav class="admin__nav">
                 <figure class="admin__img--wrapper">
-                    <img src="../../assets/Images/SAN MAT WHITE.png" class="admin__img" alt="">
+                    <img src="../../../assets/Images/SAN MAT WHITE.png" class="admin__img" alt="">
                 </figure>
                 <ul class="admin__lists">
                     <li class="admin__list"><i class="glyphicon glyphicon-user"></i><?php echo '' . $_SESSION['role'] . ''; ?> <i class="fa fa-caret-down" aria-hidden="true"></i>
@@ -48,7 +48,7 @@ if (!isset($_SESSION['role'])) {
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
             <link rel="stylesheet" href="style.css" />
 
-            <?php include "sidebar.php"; ?>
+            
             <div class="content">
                 <!-- encoder content -->
                 <section class="content">
@@ -93,28 +93,16 @@ if (!isset($_SESSION['role'])) {
                         </div><!-- /.box-body -->
                     </div><!-- /.box -->
                     <?php include "add_modal_casual.php"; ?>
-                    <?php include "function.php"; ?>
+                    
+                    
                 </section><!-- /.content -->
             </div> <!-- /.row -->
         <?php } ?>
     <?php }
-include "../footer.php"; ?>
+include "../../footer.php"; ?>
 
 <script type="text/javascript">
         $(function() {
-    var table = $("#table").DataTable({
-        "deferRender": true,
-        "paging": true,
-        "aoColumnDefs": [{
-            "bSortable": false,
-            "aTargets": [0]
-        }],
-        "aaSorting": [],
-        "language": { // Customize the language options
-            "lengthMenu": "Show _MENU_ entries", // Show the "Records per page" dropdown
-            "info": "", // Remove the "Showing x to y of z entries" text
-        }
-    });
 
     // Print only the table and its data
     $('.generate-report-btn').on('click', function() {
