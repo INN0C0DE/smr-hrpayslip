@@ -1,10 +1,6 @@
 <?php
-
 include('function_mod.php');
-
 ?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 <link rel="icon" href="../assets/images/seal.png">
@@ -27,8 +23,6 @@ include('function_mod.php');
 
 <body id="page-top">
 
-    <?php include "../connection.php"; ?>
-
     <!-- Page Wrapper -->
     <div id="wrapper">
 
@@ -50,7 +44,10 @@ include('function_mod.php');
                                 <div class="col col-md-6"></div>
                                 <div class="col col-md-6" align="right">
                                     <button type="button" name="add_data" id="add_data" class="btn btn-primary btn-sm" ><i class="fa fa-plus" aria-hidden="true"></i> Add Casual</button>
-                                    <button type="button" name="print_data" id="print_data" class="btn btn-success btn-sm generate-report-btn"><i class="fa fa-plus" aria-hidden="true"></i> Generate Report</button>
+                                    <!-- Modify the form for generating report -->
+                                    <form method="post" action="export.php">
+                                        <button type="submit" name="generate_report" class="btn btn-success btn-sm generate-report-btn"><i class="fa fa-download" aria-hidden="true"></i> Generate Report</button>
+                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -90,7 +87,7 @@ include('function_mod.php');
 
                                         <div class="modal-header">
 
-                                            <h5 class="modal-title" id="modal_title">Add Casual Employee</h5>
+                                            <h5 class="modal-title" id="modal_title">Add Casual </h5>
 
                                             <button type="button" class="close" id="close_modal" data-bs-dismiss="modal" aria-label="Close">&times;</button>
 
@@ -212,7 +209,7 @@ include('function_mod.php');
 
                         <div class="modal-backdrop fade show" id="modal_backdrop" style="display:none;"></div>
                         <!-- END OF MODAL -->
-                        
+
                         <script>
                             var table = new JSTable("#casual_table", {
                                 serverSide: true,
@@ -365,63 +362,34 @@ include('function_mod.php');
                                     _('nature_work').value = responseData.nature_work;
                                     _('specified_work').value = responseData.specified_work;
                                     _('active_status').value = responseData.active_status;
-
-                                    // Change values for update
-                                    _('oid').value = id;
+                                    _('OID').value = id;
                                     _('action').value = 'Update';
-                                    _('modal_title').innerHTML = 'Update Employee'; // Change modal title
-                                    _('action_button').innerHTML = '<i class="fa fa-save" aria-hidden="true"></i> Update'; // Change action button text
-
+                                    _('modal_title').innerHTML = 'Edit Casual';
+                                    _('action_button').innerHTML = '<i class="fa fa-save" aria-hidden="true"></i> Update';
                                     open_modal();
                                 });
                             }
 
-
+                            // delete employee
                             function delete_data(id) {
-                                if (confirm("Are you sure you want to remove it?")) {
+                                if (confirm("Are you sure you want to delete this data?")) {
                                     var form_data = new FormData();
-
                                     form_data.append('id', id);
-
-                                    form_data.append('action', 'delete');
-
+                                    form_data.append('action', 'Delete');
                                     fetch('action.php', {
-
                                         method: "POST",
-
                                         body: form_data
-
                                     }).then(function(response) {
-
                                         return response.json();
-
                                     }).then(function(responseData) {
-
-                                        _('success_message').innerHTML = responseData.success;
-
-                                        table.update();
-
+                                        if (responseData.success) {
+                                            _('success_message').innerHTML = responseData.success;
+                                            table.update();
+                                        }
                                     });
                                 }
                             }
                         </script>
-
-                    </div>
-                    <!-- /.container-fluid -->
-
-                </div>
-                <!-- End of Main Content -->
-
-            </div>
-            <!-- End of Content Wrapper -->
-
-        </div>
-        <!-- End of Page Wrapper -->
-
-        <!-- Scroll to Top Button-->
-        <a class="scroll-to-top rounded" href="#page-top">
-            <i class="fas fa-angle-up"></i>
-        </a>
 
 </body>
 

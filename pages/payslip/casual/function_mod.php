@@ -51,3 +51,41 @@ function count_all_data($connect)
 
     return $statement->rowCount();
 }
+
+// print function
+
+function fetch_all_data($connect)
+{
+    $query = "SELECT p.*, t.lname, t.fname, t.mname, n.nof
+              FROM tbl_casual p
+              INNER JOIN tbl_employee t ON p.employee = t.oid 
+              INNER JOIN tbl_naturework n ON p.nature_work = n.oid
+              ORDER BY OID DESC";
+
+    $result = $connect->query($query);
+
+    $output = array(); // Initialize an empty array to store the fetched data
+
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            // Format date of birth
+            $dob = date("m/d/Y", strtotime($row['dob']));
+
+            $output[] = array(
+                'lname' => $row['lname'],
+                'fname' => $row['fname'],
+                'mname' => $row['mname'],
+                'dob' => $dob,
+                'sex' => $row['sex'],
+                'level_cs' => $row['level_cs'],
+                'work_status' => $row['work_status'],
+                'year_service' => $row['year_service'],
+                'nof' => $row['nof'],
+                'specified_work' => $row['specified_work'],
+                'active_status' => $row['active_status']
+            );
+        }
+    }
+
+    return $output;
+}
