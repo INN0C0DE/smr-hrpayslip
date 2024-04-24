@@ -326,7 +326,7 @@ include('function_mod.php');
 
                                     _('active_status').value = responseData.active_status;
 
-                                    _('OID').value = id;
+                                    _('oid').value = id;
 
                                     _('action').value = 'Update';
 
@@ -362,7 +362,7 @@ include('function_mod.php');
                                     _('nature_work').value = responseData.nature_work;
                                     _('specified_work').value = responseData.specified_work;
                                     _('active_status').value = responseData.active_status;
-                                    _('OID').value = id;
+                                    _('oid').value = id;
                                     _('action').value = 'Update';
                                     _('modal_title').innerHTML = 'Edit Casual';
                                     _('action_button').innerHTML = '<i class="fa fa-save" aria-hidden="true"></i> Update';
