@@ -1,5 +1,6 @@
 <?php
 include('function_mod.php');
+include('../connection.php')
 ?>
 <!DOCTYPE html>
 <html lang="en">

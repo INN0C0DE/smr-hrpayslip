@@ -8,7 +8,7 @@ function fetch_top_five_data($connect)
       FROM tbl_casual p
         INNER JOIN tbl_employee t ON p.employee = t.oid 
       INNER JOIN tbl_naturework n ON p.nature_work = n.oid
-      ORDER BY oid DESC 
+      ORDER BY OID DESC 
       LIMIT 10";
 
     $result = $connect->query($query);

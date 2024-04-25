@@ -138,8 +138,8 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="txt_tin">TIN:</label>
-                                <input name="txt_tin" class="form-control input-sm" id="txt_tin" type="text" required />
+                                <<label for="txt_dob">Date of Birth:</label>
+                                <input name="txt_dob" class="form-control input-sm" id="txt_dob" type="date" required />
                             </div>
 
                             <div class="form-group">
