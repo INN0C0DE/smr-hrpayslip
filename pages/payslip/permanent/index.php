@@ -108,23 +108,23 @@ include('function_mod.php');
                                         <div class="row">
 
                                             <div class="mb-3 col-md-6">
-                                                <label for="txt_organizational_unit">Organizational Unit:</label>
-                                                <input name="organizational_unit" class="form-control input-sm" id="txt_organizational_unit" type="text" required />
+                                                <label for="organizational_unit">Organizational Unit:</label>
+                                                <input name="organizational_unit" class="form-control input-sm" id="organizational_unit" type="text" required />
                                             </div>
 
                                             <div class="mb-3 col-md-6">
-                                                <label for="txt_item_number">Item Number:</label>
-                                                <input name="item_number" class="form-control input-sm" id="txt_item_number" type="text" required />
+                                                <label for="item_number">Item Number:</label>
+                                                <input name="item_number" class="form-control input-sm" id="item_number" type="text" required />
                                             </div>
 
                                             <div class="mb-3 col-md-6">
-                                                <label for="txt_position_title">Position Title:</label>
-                                                <input name="position_title" class="form-control input-sm" id="txt_position_title" type="text" required />
+                                                <label for="position_title">Position Title:</label>
+                                                <input name="position_title" class="form-control input-sm" id="position_title" type="text" required />
                                             </div>
 
                                             <div class="mb-3 col-md-6">
-                                                <label for="txt_salary_grade">Salary Grade:</label>
-                                                <select name="salary_grade" id="txt_salary_grade" class="form-control input-sm" required>
+                                                <label for="salary_grade">Salary Grade:</label>
+                                                <select name="salary_grade" id="salary_grade" class="form-control input-sm" required>
                                                     <option value="" disabled selected>Select Salary Grade</option>
                                                     <option value="SG 1">SG 1</option>
                                                     <option value="SG 2">SG 2</option>
@@ -163,18 +163,18 @@ include('function_mod.php');
                                             </div>
 
                                             <div class="mb-3 col-md-6">
-                                                <label for="txt_authorized_annual_salary">Authorized Annual Salary:</label>
-                                                <input name="authorized_annual_salary" class="form-control input-sm" id="txt_authorized_annual_salary" type="text" required />
+                                                <label for="authorized_annual_salary">Authorized Annual Salary:</label>
+                                                <input name="authorized_annual_salary" class="form-control input-sm" id="authorized_annual_salary" type="text" required />
                                             </div>
 
                                             <div class="mb-3 col-md-6">
-                                                <label for="txt_actual_annual_salary">Actual Annual Salary:</label>
-                                                <input name="actual_annual_salary" class="form-control input-sm" id="txt_actual_annual_salary" type="text" required />
+                                                <label for="actual_annual_salary">Actual Annual Salary:</label>
+                                                <input name="actual_annual_salary" class="form-control input-sm" id="actual_annual_salary" type="text" required />
                                             </div>
 
                                             <div class="mb-3 col-md-6">
-                                                <label for="txt_step">Step:</label>
-                                                <select name="step" id="txt_step" class="form-control input-sm" required>
+                                                <label for="step">Step:</label>
+                                                <select name="step" id="step" class="form-control input-sm" required>
                                                     <option value="" disabled selected>Select Step</option>
                                                     <option value="Step 1">Step 1</option>
                                                     <option value="Step 2">Step 2</option>
@@ -188,23 +188,23 @@ include('function_mod.php');
                                             </div>
 
                                             <div class="mb-3 col-md-6">
-                                                <label for="txt_area_code">Area Code:</label>
-                                                <input name="area_code" class="form-control input-sm" id="txt_area_code" type="text" required />
+                                                <label for="area_code">Area Code:</label>
+                                                <input name="area_code" class="form-control input-sm" id="area_code" type="text" required />
                                             </div>
 
                                             <div class="mb-3 col-md-6">
-                                                <label for="txt_area_type">Area Type:</label>
-                                                <input name="area_type" class="form-control input-sm" id="txt_area_type" type="text" required />
+                                                <label for="area_type">Area Type:</label>
+                                                <input name="area_type" class="form-control input-sm" id="area_type" type="text" required />
                                             </div>
 
                                             <div class="mb-3 col-md-6">
-                                                <label for="txt_level">Level:</label>
-                                                <input name="level" class="form-control input-sm" id="txt_level" type="text" required />
+                                                <label for="level">Level:</label>
+                                                <input name="level" class="form-control input-sm" id="level" type="text" required />
                                             </div>
 
                                             <div class="mb-3 col-md-6">
-                                                <label for="txt_employee">Employee:</label>
-                                                <select name="employee_name" id="txt_employee" class="form-control input-sm" required>
+                                                <label for="employee_name">Employee:</label>
+                                                <select name="employee_name" id="employee_name" class="form-control input-sm" required>
                                                     <option value="" disabled selected>Select Employee</option>
                                                     <?php
                                                     // Assuming $con is the MySQLi database connection variable
@@ -218,8 +218,8 @@ include('function_mod.php');
                                             </div>
 
                                             <div class="mb-3 col-md-6">
-                                                <label for="txt_sex">Sex:</label>
-                                                <select name="permanent_sex" id="txt_sex" class="form-control input-sm" required>
+                                                <label for="permanent_sex">Sex:</label>
+                                                <select name="permanent_sex" id="permanent_sex" class="form-control input-sm" required>
                                                     <option value="" disabled selected>Select Sex</option>
                                                     <option value="Male">Male</option>
                                                     <option value="Female">Female</option>
@@ -227,28 +227,28 @@ include('function_mod.php');
                                             </div>
 
                                             <div class="mb-3 col-md-6">
-                                            <label for="txt_dob">Date of Birth:</label>
-                                            <input name="permanent_dob" class="form-control input-sm" id="txt_dob" type="date" required />
+                                            <label for="permanent_dob">Date of Birth:</label>
+                                            <input name="permanent_dob" class="form-control input-sm" id="permanent_dob" type="date" required />
                                             </div>
 
                                             <div class="mb-3 col-md-6">
-                                            <label for="txt_tin">TIN:</label>
-                                            <input name="tin" class="form-control input-sm" id="txt_tin" type="text" required />
+                                            <label for="tin">TIN:</label>
+                                            <input name="tin" class="form-control input-sm" id="tin" type="text" required />
                                             </div>
 
                                             <div class="mb-3 col-md-6">
-                                            <label for="txt_date_of_original_appointment">Date of Original Appointment:</label>
-                                            <input name="date_original_appointment" class="form-control input-sm" id="txt_date_of_original_appointment" type="date" required />
+                                            <label for="date_original_appointment">Date of Original Appointment:</label>
+                                            <input name="date_original_appointment" class="form-control input-sm" id="date_original_appointment" type="date" required />
                                             </div>
 
                                             <div class="mb-3 col-md-6">
-                                            <label for="txt_date_of_last_promotion">Date of Last Promotion/ Appointment:</label>
-                                <input name="date_last_promotion" class="form-control input-sm" id="txt_date_of_last_promotion" type="date" required />
+                                            <label for="date_last_promotion">Date of Last Promotion/ Appointment:</label>
+                                <input name="date_last_promotion" class="form-control input-sm" id="date_last_promotion" type="date" required />
                                             </div>
 
                                             <div class="mb-3 col-md-6">
-                                            <label for="txt_status">Status:</label>
-                                <select name="permanent_status" id="txt_status" class="form-control input-sm" required>
+                                            <label for="permanent_status">Status:</label>
+                                <select name="permanent_status" id="permanent_status" class="form-control input-sm" required>
                                     <option value="" disabled selected>Select Status</option>
                                     <option value="Active">Active</option>
                                     <option value="Inactive">Inactive</option>
@@ -256,13 +256,13 @@ include('function_mod.php');
                                             </div>
 
                                             <div class="mb-3 col-md-6">
-                                            <label for="txt_civil_service_eligibility">Civil Service Eligibility:</label>
-                                <input name="cs_eligibility" class="form-control input-sm" id="txt_civil_service_eligibility" type="text" required />
+                                            <label for="cs_eligibility">Civil Service Eligibility:</label>
+                                <input name="cs_eligibility" class="form-control input-sm" id="cs_eligibility" type="text" required />
                                             </div>
 
                                             <div class="mb-3 col-md-6">
-                                            <label for="txt_comment">Comment/ Annotation:</label>
-                                <textarea name="permanent_comment" class="form-control input-sm" id="txt_comment" required></textarea>
+                                            <label for="permanent_comment">Comment/ Annotation:</label>
+                                <textarea name="permanent_comment" class="form-control input-sm" id="permanent_comment" required></textarea>
                                             </div>
                                             </div>
 
@@ -488,7 +488,7 @@ include('function_mod.php');
                                     _('permanent_comment').value = responseData.permanent_comment;
                                     _('oid').value = id;
                                     _('action').value = 'Update';
-                                    _('modal_title').innerHTML = 'Edit Casual';
+                                    _('modal_title').innerHTML = 'Edit Permanent';
                                     _('action_button').innerHTML = '<i class="fa fa-save" aria-hidden="true"></i> Update';
                                     open_modal();
                                 });
@@ -499,7 +499,7 @@ include('function_mod.php');
                                 if (confirm("Are you sure you want to delete this data?")) {
                                     var form_data = new FormData();
                                     form_data.append('id', id);
-                                    form_data.append('action', 'Delete');
+                                    form_data.append('action', 'delete');
                                     fetch('action.php', {
                                         method: "POST",
                                         body: form_data

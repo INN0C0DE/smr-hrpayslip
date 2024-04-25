@@ -376,7 +376,7 @@ include('../connection.php')
                                 if (confirm("Are you sure you want to delete this data?")) {
                                     var form_data = new FormData();
                                     form_data.append('id', id);
-                                    form_data.append('action', 'Delete');
+                                    form_data.append('action', 'delete');
                                     fetch('action.php', {
                                         method: "POST",
                                         body: form_data

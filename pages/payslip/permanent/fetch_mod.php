@@ -21,8 +21,7 @@ $query = "SELECT p.*, t.lname, t.fname, t.mname
           FROM tbl_permanent p
           INNER JOIN tbl_employee t ON p.employee = t.oid 
           WHERE 
-            t.lname LIKE '%" . $search . "%' 
-            OR t.lname LIKE '%" . $search . "%' 
+           t.lname LIKE '%" . $search . "%' 
             OR t.fname LIKE '%" . $search . "%' 
             OR t.mname LIKE '%" . $search . "%' 
             OR p.organizational_unit LIKE '%" . $search . "%' 

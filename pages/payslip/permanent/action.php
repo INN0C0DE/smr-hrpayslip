@@ -133,6 +133,7 @@ if($statement->execute($data))
                 actual_annual_salary = :actual_annual_salary,
                 step = :step,
                 area_code = :area_code,
+                area_type = :area_type,
                 level = :level,
                 employee_name = :employee_name,
                 permanent_sex = :permanent_sex,
@@ -171,7 +172,7 @@ if($statement->execute($data))
     if($_POST['action'] == 'fetch')
     {
         $query = "SELECT * FROM tbl_permanent
-        WHERE oid = '".$_POST["id"]."'
+        WHERE OID = '".$_POST["id"]."'
         ";
 
         $result = $connect->query($query);
