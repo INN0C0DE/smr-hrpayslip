@@ -15,11 +15,11 @@ $search = empty($searchQuery) || $searchQuery === "null" ? "" : $searchQuery;
 $sortColumnIndex = filter_input(INPUT_GET, "sortColumn", FILTER_SANITIZE_NUMBER_INT);
 $sortDirection = filter_input(INPUT_GET, "sortDirection", FILTER_SANITIZE_STRING);
 
-$column = array("t.lname","t.fname", "t.mname", "organizational_unit", "item_number", "position_title", "salary_grade", "authorized_annual_salary", "actual_annual_salary", "step", "area_code", "level", "employee_name" , "permanent_sex", "permanent_dob", "tin", "date_original_appointment", "date_last_promotion", "permanent_status", "cs_eligibility", "permanent_comment");
+$column = array("t.lname","t.fname", "t.mname", "organizational_unit", "item_number", "position_title", "salary_grade", "authorized_annual_salary", "actual_annual_salary", "step", "area_code", "area_type", "level", "employee_name" , "permanent_sex", "permanent_dob", "tin", "date_original_appointment", "date_last_promotion", "permanent_status", "cs_eligibility", "permanent_comment");
 
 $query = "SELECT p.*, t.lname, t.fname, t.mname
           FROM tbl_permanent p
-          INNER JOIN tbl_employee t ON p.employee = t.oid 
+          INNER JOIN tbl_employee t ON p.employee_name = t.oid 
           WHERE 
            t.lname LIKE '%" . $search . "%' 
             OR t.fname LIKE '%" . $search . "%' 
@@ -80,7 +80,7 @@ foreach ($statement as $row) {
     $sub_array[] = $row['area_code'];
     $sub_array[] = $row['area_type'];
     $sub_array[] = $row['level'];
-    $sub_array[] = $row['employee_name'];
+    $sub_array[] = $row['lname'] . ', ' . $row['fname'] . ' ' . $row['mname'];
     $sub_array[] = $row['permanent_sex'];
     $sub_array[] = $pdob;
     $sub_array[] = $row['tin'];

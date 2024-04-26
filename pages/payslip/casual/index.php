@@ -44,7 +44,7 @@ include('../connection.php')
                             <div class="row">
                                 <div class="col col-md-6"></div>
                                 <div class="col col-md-6" align="right">
-                                    <button type="button" name="add_data" id="add_data" class="btn btn-primary btn-sm" ><i class="fa fa-plus" aria-hidden="true"></i> Add Casual</button>
+                                    <button type="button" name="add_data" id="add_data" class="btn btn-primary btn-sm"><i class="fa fa-plus" aria-hidden="true"></i> Add Casual</button>
                                     <!-- Modify the form for generating report -->
                                     <form method="post" action="export.php">
                                         <button type="submit" name="generate_report" class="btn btn-success btn-sm generate-report-btn"><i class="fa fa-download" aria-hidden="true"></i> Generate Report</button>
@@ -96,99 +96,99 @@ include('../connection.php')
 
                                         <div class="modal-body">
 
-                                        <div class="row">
+                                            <div class="row">
 
-                                            <div class="mb-3 col-md-6">
-                                                <label for="employee">Employee:</label>
-                                                <select name="employee" id="employee" class="form-control input-sm" required>
-                                                    <option value="" disabled selected>Select Employee</option>
-                                                    <?php
-                                                    // Assuming $con is the MySQLi database connection variable
-                                                    $result = mysqli_query($con, "SELECT oid, fname, mname, lname, suffix FROM tbl_employee");
-                                                    while ($row = mysqli_fetch_array($result)) {
-                                                        $fullName = $row['lname'] . ', ' . $row['fname'] . ' ' . $row['suffix'] . ' ' . $row['mname'];
-                                                        echo '<option value="' . $row['oid'] . '">' . $fullName . '</option>';
-                                                    }
-                                                    ?>
-                                                </select>
-                                                <!-- <span class="text-danger" id="Plantilla_error"></span> -->
-                                            </div>
+                                                <div class="mb-3 col-md-6">
+                                                    <label for="employee">Employee:</label>
+                                                    <select name="employee" id="employee" class="form-control input-sm" required>
+                                                        <option value="" disabled selected>Select Employee</option>
+                                                        <?php
+                                                        // Assuming $con is the MySQLi database connection variable
+                                                        $result = mysqli_query($con, "SELECT oid, fname, mname, lname, suffix FROM tbl_employee");
+                                                        while ($row = mysqli_fetch_array($result)) {
+                                                            $fullName = $row['lname'] . ', ' . $row['fname'] . ' ' . $row['suffix'] . ' ' . $row['mname'];
+                                                            echo '<option value="' . $row['oid'] . '">' . $fullName . '</option>';
+                                                        }
+                                                        ?>
+                                                    </select>
+                                                    <!-- <span class="text-danger" id="Plantilla_error"></span> -->
+                                                </div>
 
-                                            <div class="mb-3 col-md-6">
-                                                <label for="dob">Date of Birth:</label>
-                                                <input name="dob" class="form-control input-sm" id="dob" type="date" required />
-                                                <!-- <span class="text-danger" id="Plantilla_error"></span> -->
-                                            </div>
+                                                <div class="mb-3 col-md-6">
+                                                    <label for="dob">Date of Birth:</label>
+                                                    <input name="dob" class="form-control input-sm" id="dob" type="date" required />
+                                                    <!-- <span class="text-danger" id="Plantilla_error"></span> -->
+                                                </div>
 
-                                            <div class="mb-3 col-md-6">
-                                                <label for="sex">Sex:</label>
-                                                <select name="sex" id="sex" class="form-control input-sm" required>
-                                                    <option value="" disabled selected>Select Sex</option>
-                                                    <option value="Male">Male</option>
-                                                    <option value="Female">Female</option>
-                                                </select>
-                                                <!-- <span class="text-danger" id="Plantilla_error"></span> -->
-                                            </div>
+                                                <div class="mb-3 col-md-6">
+                                                    <label for="sex">Sex:</label>
+                                                    <select name="sex" id="sex" class="form-control input-sm" required>
+                                                        <option value="" disabled selected>Select Sex</option>
+                                                        <option value="Male">Male</option>
+                                                        <option value="Female">Female</option>
+                                                    </select>
+                                                    <!-- <span class="text-danger" id="Plantilla_error"></span> -->
+                                                </div>
 
-                                            <div class="mb-3 col-md-6">
-                                                <label for="level_cs">Level of CS Eligibility:</label>
-                                                <select name="level_cs" id="level_cs" class="form-control input-sm" required>
-                                                    <option value="" disabled selected>Select Level of CS Eligibility</option>
-                                                    <option value="1st Level">1st Level</option>
-                                                    <option value="2nd Level">2nd Level</option>
-                                                    <option value="3rd Level">3rd Level</option>
-                                                    <option value="No Eligibility">No Eligibility</option>
-                                                </select>
-                                                <!-- <span class="text-danger" id="Plantilla_error"></span> -->
-                                            </div>
+                                                <div class="mb-3 col-md-6">
+                                                    <label for="level_cs">Level of CS Eligibility:</label>
+                                                    <select name="level_cs" id="level_cs" class="form-control input-sm" required>
+                                                        <option value="" disabled selected>Select Level of CS Eligibility</option>
+                                                        <option value="1st Level">1st Level</option>
+                                                        <option value="2nd Level">2nd Level</option>
+                                                        <option value="3rd Level">3rd Level</option>
+                                                        <option value="No Eligibility">No Eligibility</option>
+                                                    </select>
+                                                    <!-- <span class="text-danger" id="Plantilla_error"></span> -->
+                                                </div>
 
-                                            <div class="mb-3 col-md-6">
-                                                <label for="work_status">Work Status:</label>
-                                                <select name="work_status" id="work_status" class="form-control input-sm" required>
-                                                    <option value="" disabled selected>Select Work Status</option>
-                                                    <option value="Job Order">Job Order</option>
-                                                    <option value="Casual">Casual</option>
-                                                </select>
-                                                <!-- <span class="text-danger" id="Plantilla_error"></span> -->
-                                            </div>
+                                                <div class="mb-3 col-md-6">
+                                                    <label for="work_status">Work Status:</label>
+                                                    <select name="work_status" id="work_status" class="form-control input-sm" required>
+                                                        <option value="" disabled selected>Select Work Status</option>
+                                                        <option value="Job Order">Job Order</option>
+                                                        <option value="Casual">Casual</option>
+                                                    </select>
+                                                    <!-- <span class="text-danger" id="Plantilla_error"></span> -->
+                                                </div>
 
-                                            <div class="mb-3 col-md-6">
-                                                <label for="year_service">Years of Service as JO/COS/MOA personnel:</label>
-                                                <input name="year_service" class="form-control input-sm" id="year_service" type="number" required />
-                                                <!-- <span class="text-danger" id="Plantilla_error"></span> -->
-                                            </div>
+                                                <div class="mb-3 col-md-6">
+                                                    <label for="year_service">Years of Service as JO/COS/MOA personnel:</label>
+                                                    <input name="year_service" class="form-control input-sm" id="year_service" type="number" required />
+                                                    <!-- <span class="text-danger" id="Plantilla_error"></span> -->
+                                                </div>
 
-                                            <div class="mb-3 col-md-6">
-                                                <label for="nature_work">Nature of Work:</label>
-                                                <select name="nature_work" id="nature_work" class="form-control input-sm" required>
-                                                    <option value="" disabled selected>Select Nature of Work</option>
-                                                    <?php
-                                                    // Assuming $con is the MySQLi database connection variable
-                                                    $result = mysqli_query($con, "SELECT oid, nof FROM tbl_naturework");
-                                                    while ($row = mysqli_fetch_array($result)) {
-                                                        $naturework = $row['nof'];
-                                                        echo '<option value="' . $row['oid'] . '">' . $naturework . '</option>';
-                                                    }
-                                                    ?>
-                                                </select>
-                                                <!-- <span class="text-danger" id="Plantilla_error"></span> -->
-                                            </div>
+                                                <div class="mb-3 col-md-6">
+                                                    <label for="nature_work">Nature of Work:</label>
+                                                    <select name="nature_work" id="nature_work" class="form-control input-sm" required>
+                                                        <option value="" disabled selected>Select Nature of Work</option>
+                                                        <?php
+                                                        // Assuming $con is the MySQLi database connection variable
+                                                        $result = mysqli_query($con, "SELECT oid, nof FROM tbl_naturework");
+                                                        while ($row = mysqli_fetch_array($result)) {
+                                                            $naturework = $row['nof'];
+                                                            echo '<option value="' . $row['oid'] . '">' . $naturework . '</option>';
+                                                        }
+                                                        ?>
+                                                    </select>
+                                                    <!-- <span class="text-danger" id="Plantilla_error"></span> -->
+                                                </div>
 
-                                            <div class="mb-3 col-md-6">
-                                                <label for="specified_work">Specified Work:</label>
-                                                <input name="specified_work" class="form-control input-sm" id="specified_work" type="text" required />
-                                                <!-- <span class="text-danger" id="Plantilla_error"></span> -->
-                                            </div>
+                                                <div class="mb-3 col-md-6">
+                                                    <label for="specified_work">Specified Work:</label>
+                                                    <input name="specified_work" class="form-control input-sm" id="specified_work" type="text" required />
+                                                    <!-- <span class="text-danger" id="Plantilla_error"></span> -->
+                                                </div>
 
-                                            <div class="mb-3 col-md-6">
-                                                <label for="active_status">Status:</label>
-                                                <select name="active_status" id="active_status" class="form-control input-sm" required>
-                                                    <option value="" disabled selected>Select Status</option>
-                                                    <option value="Active">Active</option>
-                                                    <option value="Inactive">Inactive</option>
-                                                </select>
-                                                <!-- <span class="text-danger" id="Plantilla_error"></span> -->
-                                            </div>
+                                                <div class="mb-3 col-md-6">
+                                                    <label for="active_status">Status:</label>
+                                                    <select name="active_status" id="active_status" class="form-control input-sm" required>
+                                                        <option value="" disabled selected>Select Status</option>
+                                                        <option value="Active">Active</option>
+                                                        <option value="Inactive">Inactive</option>
+                                                    </select>
+                                                    <!-- <span class="text-danger" id="Plantilla_error"></span> -->
+                                                </div>
                                             </div>
 
                                         </div>
@@ -212,6 +212,37 @@ include('../connection.php')
                         <!-- END OF MODAL -->
 
                         <script>
+                            document.addEventListener('DOMContentLoaded', function() {
+                                // Function to check if any required fields are empty
+                                function checkForm() {
+                                    // Get all required input elements
+                                    var requiredInputs = document.querySelectorAll('input[required], select[required]');
+                                    var isEmpty = false;
+
+                                    // Check if any required field is empty
+                                    requiredInputs.forEach(function(input) {
+                                        if (input.value.trim() === '') {
+                                            isEmpty = true;
+                                        }
+                                    });
+
+                                    // If any required field is empty, show an alert and prevent form submission
+                                    if (isEmpty) {
+                                        alert('Please fill in all required fields.');
+                                        return false; // Prevent form submission
+                                    }
+
+                                    return true; // Allow form submission
+                                }
+
+                                // Add event listener to the form submit button
+                                document.getElementById('action_button').addEventListener('click', function(event) {
+                                    if (!checkForm()) {
+                                        event.preventDefault(); // Prevent default form submission
+                                    }
+                                });
+                            });
+
                             var table = new JSTable("#casual_table", {
                                 serverSide: true,
                                 deferLoading: <?php echo count_all_data($connect); ?>,
